@@ -479,7 +479,7 @@ class GUMP
      * @param string $field
      * @param string $readable_name
      */
-    static function set_field_name($field, $readable_name)
+    function set_field_name($field, $readable_name)
     {
         self::$fields[$field] = $readable_name;
     }
