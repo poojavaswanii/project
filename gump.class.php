@@ -353,7 +353,7 @@ class GUMP
             }
         }
 
-        return $return;
+        //return $return;
     }
 
     /**
