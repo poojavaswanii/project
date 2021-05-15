@@ -361,7 +361,7 @@ class GUMP
      *
      * @return array
      */
-    public function errors()
+    function errors()
     {
         return $this->errors;
     }
