@@ -468,7 +468,7 @@ class GUMP
      *
      * @return bool
      */
-    protected function shouldRunValidation(array $input, $rules, $field)
+    function shouldRunValidation(array $input, $rules, $field)
     {
         return in_array('required', $rules) || (isset($input[$field]) && trim($input[$field]) != '');
     }
