@@ -496,7 +496,7 @@ class GUMP
      *
      * @param array $array
      */
-    public static function set_field_names(array $array)
+    function set_field_names(array $array)
     {
         foreach ($array as $field => $readable_name) {
             self::set_field_name($field, $readable_name);
@@ -509,7 +509,7 @@ class GUMP
      * @param string $rule
      * @param string $message
      */
-    public static function set_error_message($rule, $message)
+   function set_error_message($rule, $message)
     {
         $gump = self::get_instance();
         self::$validation_methods_errors[$rule] = $message;
@@ -527,7 +527,7 @@ class GUMP
      *
      * @param array $array
      */
-    public static function set_error_messages(array $array)
+  function set_error_messages(array $array)
     {
         foreach ($array as $rule => $message) {
             self::set_error_message($rule, $message);
@@ -539,7 +539,7 @@ class GUMP
      *
      * @return array
      */
-    protected function get_messages()
+    function get_messages()
     {
         $lang_file = __DIR__.DIRECTORY_SEPARATOR.'lang'.DIRECTORY_SEPARATOR.$this->lang.'.php';
         $messages = require $lang_file;
@@ -560,7 +560,7 @@ class GUMP
      * @return array
      * @return string
      */
-    public function get_readable_errors($convert_to_string = false, $field_class = 'gump-field', $error_class = 'gump-error-message')
+    function get_readable_errors($convert_to_string = false, $field_class = 'gump-field', $error_class = 'gump-error-message')
     {
         if (empty($this->errors)) {
             return ($convert_to_string) ? null : array();
@@ -615,7 +615,7 @@ class GUMP
      *
      * @return array | null (if empty)
      */
-    public function get_errors_array($convert_to_string = null)
+    function get_errors_array($convert_to_string = null)
     {
         if (empty($this->errors)) {
             return ($convert_to_string) ? null : array();
@@ -671,7 +671,7 @@ class GUMP
      *
      * @throws Exception
      */
-    public function filter(array $input, array $filterset)
+    function filter(array $input, array $filterset)
     {
         foreach ($filterset as $field => $filters) {
             if (!array_key_exists($field, $input)) {
@@ -727,7 +727,7 @@ class GUMP
      *
      * @return string
      */
-    protected function filter_noise_words($value, $params = null)
+    function filter_noise_words($value, $params = null)
     {
         $value = preg_replace('/\s\s+/u', chr(32), $value);
 
@@ -758,7 +758,7 @@ class GUMP
      *
      * @return string
      */
-    protected function filter_rmpunctuation($value, $params = null)
+    function filter_rmpunctuation($value, $params = null)
     {
         return preg_replace("/(?![.=$'€%-])\p{P}/u", '', $value);
     }
@@ -773,7 +773,7 @@ class GUMP
      *
      * @return string
      */
-    protected function filter_sanitize_string($value, $params = null)
+    function filter_sanitize_string($value, $params = null)
     {
         return filter_var($value, FILTER_SANITIZE_STRING);
     }
@@ -788,7 +788,7 @@ class GUMP
      *
      * @return string
      */
-    protected function filter_urlencode($value, $params = null)
+    function filter_urlencode($value, $params = null)
     {
         return filter_var($value, FILTER_SANITIZE_ENCODED);
     }
@@ -803,7 +803,7 @@ class GUMP
      *
      * @return string
      */
-    protected function filter_htmlencode($value, $params = null)
+    function filter_htmlencode($value, $params = null)
     {
         return filter_var($value, FILTER_SANITIZE_SPECIAL_CHARS);
     }
@@ -818,7 +818,7 @@ class GUMP
      *
      * @return string
      */
-    protected function filter_sanitize_email($value, $params = null)
+    function filter_sanitize_email($value, $params = null)
     {
         return filter_var($value, FILTER_SANITIZE_EMAIL);
     }
@@ -831,7 +831,7 @@ class GUMP
      *
      * @return string
      */
-    protected function filter_sanitize_numbers($value, $params = null)
+    function filter_sanitize_numbers($value, $params = null)
     {
         return filter_var($value, FILTER_SANITIZE_NUMBER_INT);
     }
@@ -857,7 +857,7 @@ class GUMP
      *
      * @return string
      */
-    protected function filter_basic_tags($value, $params = null)
+    function filter_basic_tags($value, $params = null)
     {
         return strip_tags($value, self::$basic_tags);
     }
